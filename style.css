@@ -36,7 +36,7 @@ main {
     display: flex;
 }
 
-aside {
+.information {
     padding: 0 15px;
 }
 
@@ -62,9 +62,4 @@ pre {
 
 code {
     font-size: 14px;    
-}
-
-aside section h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
 }

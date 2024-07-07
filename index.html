@@ -23,14 +23,12 @@
             </nav>
         </header>
 
-
-
         <main>
             <img src="./assets/img/photo.jpg" alt="Kate Shlykava" width="182" height="234">
 
-            <aside>
-                <section>
-                    <h1>Kate Shlykava (Frontend developer)</h1>
+            <div class="information">
+                <h1>Kate Shlykava (Frontend developer)</h1>
+                <section>                    
                     <h2 id="contacts">Contact information:</h2>
                     <ul>
                         <li><span>Address:</span> Minsk, Belarus</li>
@@ -57,22 +55,41 @@
                 <section id="code">
                     <h2>Code example:</h2>
                     <pre><code>
-export interface SortParams<T> {
-    columnName: keyof T;
-    rule?: 'ASC' | 'DESC';
+"use strict";
+let init = () => {
+    let form = document.forms.formName;
+    let formElements = form.querySelectorAll('input[type=checkbox], input[type=radio], select');
+    let url = new URL("http://example.com/filter?size=M&color=1&color=2&manufacturer=aaa&manufacturer=ddd");
+
+    for (let [name, value] of url.searchParams) {
+        let elements = form.querySelectorAll(`*[name=${name}]`);
+
+        for (let elem of elements) {
+            if (elem.nodeName === 'INPUT') {
+                elem.value === value && (elem.checked = true);
+            }
+            if (elem.nodeName === 'SELECT') {
+                for (let i in elem.options) {
+                    elem.options[i].value === value && (elem.options[i].selected = true);
+                }
+            }
+        }
+    }
+
+    for (let elem of formElements) {
+        elem.onchange = e => {
+            let formData = new FormData(form);
+            let newUrl = new URL(url.origin);
+
+            for (let [name, value] of formData) {
+                newUrl.searchParams.append(name, value);
+            }
+            console.log("newUrl:", newUrl.href);
+        }
+    }
 }
 
-type SortBy = <T>(list: T[], { rule, columnName }: SortParams<T>) => T[];
-
-const sortBy: SortBy = (list, { rule, columnName }) => (
-    list.slice().sort((a, b) => (
-    rule === 'DESC'
-        ? a[columnName] > b[columnName] ? -1 : 1
-        : a[columnName] > b[columnName] ? 1 : -1
-    ))
-);
-
-export default sortBy;
+document.addEventListener("DOMContentLoaded", init);            
                     </code></pre>
                 </section>
 
@@ -88,7 +105,7 @@ export default sortBy;
                     </ul>
                 </section>
 
-                <section= id="education">
+                <section id="education">
                     <h2>Education:</h2>
                     <div>
                         Higher State College of Communications, Faculty of Telecommunications
@@ -101,7 +118,7 @@ export default sortBy;
                         <li>English (A2 level)</li>
                     </ul>
                 </section>
-            </aside>
+            </div>
         </main>
 
         <footer>
