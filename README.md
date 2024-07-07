@@ -1,3 +1,4 @@
 # rsschool-cv
 
-[CV](https://shlykovaKate.github.io/rsschool-cv/cv "CV")
+[CV (markdown)](https://shlykovaKate.github.io/rsschool-cv/cv "CV (markdown)")
+[CV (layout)](https://shlykovaKate.github.io/rsschool-cv "CV (layout)")
