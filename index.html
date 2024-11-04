@@ -28,7 +28,7 @@
 
             <div class="information">
                 <h1>Kate Shlykava (Frontend developer)</h1>
-                <section>                    
+                <section>
                     <h2 id="contacts">Contact information:</h2>
                     <ul>
                         <li><span>Address:</span> Minsk, Belarus</li>
@@ -56,28 +56,28 @@
                     <h2>Code example:</h2>
                     <pre><code>
 "use strict";
-let init = () => {
+let init = () =&gt; {
     let form = document.forms.formName;
     let formElements = form.querySelectorAll('input[type=checkbox], input[type=radio], select');
-    let url = new URL("http://example.com/filter?size=M&color=1&color=2&manufacturer=aaa&manufacturer=ddd");
+    let url = new URL("http://example.com/filter?size=M&amp;color=1&amp;color=2&amp;manufacturer=aaa&amp;manufacturer=ddd");
 
     for (let [name, value] of url.searchParams) {
         let elements = form.querySelectorAll(`*[name=${name}]`);
 
         for (let elem of elements) {
             if (elem.nodeName === 'INPUT') {
-                elem.value === value && (elem.checked = true);
+                elem.value === value &amp;&amp; (elem.checked = true);
             }
             if (elem.nodeName === 'SELECT') {
                 for (let i in elem.options) {
-                    elem.options[i].value === value && (elem.options[i].selected = true);
+                    elem.options[i].value === value &amp;&amp; (elem.options[i].selected = true);
                 }
             }
         }
     }
 
     for (let elem of formElements) {
-        elem.onchange = e => {
+        elem.onchange = e =&gt; {
             let formData = new FormData(form);
             let newUrl = new URL(url.origin);
 
@@ -89,7 +89,7 @@ let init = () => {
     }
 }
 
-document.addEventListener("DOMContentLoaded", init);            
+document.addEventListener("DOMContentLoaded", init);
                     </code></pre>
                 </section>
 
