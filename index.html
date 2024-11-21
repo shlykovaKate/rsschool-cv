@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CV</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#contacts">Contacts</a></li>
+                    <li><a href="#aboutme">About me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#code">My code</a></li>
+                    <li><a href="#projects">My projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#languages">Languages</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <img src="./assets/img/photo.jpg" alt="Kate Shlykava" width="182" height="234">
+
+            <div class="information">
+                <h1>Kate Shlykava (Frontend developer)</h1>
+                <section>
+                    <h2 id="contacts">Contact information:</h2>
+                    <ul>
+                        <li><span>Address:</span> Minsk, Belarus</li>
+                        <li><span>Email:</span> <a href="mailto:fonarikkate@gmail.com">fonarikkate@gmail.com</a></li>
+                    </ul>
+                </section>
+
+                <section id="aboutme">
+                    <h2>About me:</h2>
+                    <div>I like to study and learn something new. I like to read books.</div>
+                </section>
+
+                <section id="skills">
+                    <h2>Skills:</h2>
+                    <ul>
+                        <li>HTML and CSS</li>
+                        <li>JavaScript</li>
+                        <li>Git/GitHub</li>
+                        <li>jQuery</li>
+                        <li>NodeJS</li>
+                    </ul>
+                </section>
+
+                <section id="code">
+                    <h2>Code example:</h2>
+                    <pre><code>
+"use strict";
+let init = () =&gt; {
+    let form = document.forms.formName;
+    let formElements = form.querySelectorAll('input[type=checkbox], input[type=radio], select');
+    let url = new URL("http://example.com/filter?size=M&amp;color=1&amp;color=2&amp;manufacturer=aaa&amp;manufacturer=ddd");
+
+    for (let [name, value] of url.searchParams) {
+        let elements = form.querySelectorAll(`*[name=${name}]`);
+
+        for (let elem of elements) {
+            if (elem.nodeName === 'INPUT') {
+                elem.value === value &amp;&amp; (elem.checked = true);
+            }
+            if (elem.nodeName === 'SELECT') {
+                for (let i in elem.options) {
+                    elem.options[i].value === value &amp;&amp; (elem.options[i].selected = true);
+                }
+            }
+        }
+    }
+
+    for (let elem of formElements) {
+        elem.onchange = e =&gt; {
+            let formData = new FormData(form);
+            let newUrl = new URL(url.origin);
+
+            for (let [name, value] of formData) {
+                newUrl.searchParams.append(name, value);
+            }
+            console.log("newUrl:", newUrl.href);
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", init);
+                    </code></pre>
+                </section>
+
+                <section id="projects">
+                    <h2>My projects:</h2>
+                    <ul>
+                        <li>
+                            <a href="https://github.com/shlykovaKate/SPA-users-list">SPA users list</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/shlykovaKate/NodeJS_file_manager">NodeJS file manager</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="education">
+                    <h2>Education:</h2>
+                    <div>
+                        Higher State College of Communications, Faculty of Telecommunications
+                    </div>
+                </section>
+
+                <section id="languages">
+                    <h2>Foreign languages:</h2>
+                    <ul>
+                        <li>English (A2 level)</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <a href="https://github.com/shlykovaKate">My GitHub</a>
+            <div>2024</div>
+            <a href="https://rs.school/courses/javascript-ru"><img src="./assets/img/rs-school-logo.svg" alt="Kate Shlykava" width="69" height="26"></a>
+        </footer>
+    </body>
+</html>
